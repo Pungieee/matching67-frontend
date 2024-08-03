@@ -1,0 +1,154 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pixelify Sans', sans-serif;
+    color: #c9cacc;
+    /* Light text color for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: auto;
+    /* Allow scrolling */
+}
+
+#background-video {
+    position: fixed;
+    /* Use fixed to ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensure the video covers the entire area */
+    z-index: -1;
+    /* Place the video behind other content */
+}
+
+.container {
+    text-align: center;
+    background: rgba(22, 27, 34, 0.8);
+    /* Slightly transparent background */
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    /* Darker shadow for depth */
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 60px;
+    /* Increase this value to create space for the button */
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #58a6ff;
+    /* Highlight color for header */
+    font-size: 28px;
+    font-family: 'Pixelify Sans', sans-serif;
+    /* Pixelify Sans font for the header */
+}
+
+input {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 2px solid #58a6ff;
+    /* Highlight color for border */
+    width: calc(100% - 26px);
+    font-size: 16px;
+    background-color: #0d1117;
+    color: #c9cacc;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Space above the button group */
+}
+
+.button-group button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #58a6ff;
+    /* Highlight color for button */
+    color: #0d1117;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: 'Pixelify Sans', sans-serif;
+    margin: 0 10px; /* Add space between buttons */
+}
+
+.button-group button:hover {
+    background-color: #1f6feb;
+    /* Darker highlight color on hover */
+    transform: scale(1.05);
+    /* Slightly larger on hover */
+}
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    /* Space above the button group */
+}
+
+.button-group button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #58a6ff;
+    /* Highlight color for button */
+    color: #0d1117;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: 'Pixelify Sans', sans-serif;
+    margin: 0 10px;
+    /* Add space between buttons */
+}
+
+.button-group button:hover {
+    background-color: #1f6feb;
+    /* Darker highlight color on hover */
+    transform: scale(1.05);
+    /* Slightly larger on hover */
+}
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(33, 38, 45, 0.8);
+    /* Slightly transparent background for result box */
+    border-radius: 8px;
+    font-size: 16px;
+    color: #c9cacc;
+}
+
+.result h2 {
+    margin-bottom: 10px;
+    color: #58a6ff;
+}
+
+canvas {
+    margin-top: 20px;
+    /* Ensure charts have margin from the content above */
+}
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('confetti.gif') no-repeat center center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 2;
+}

@@ -1,6 +1,4 @@
-// result.js
-
-const API_URL = 'https://safe-savannah-37690-21aadeb098f5.herokuapp.com/api';
+const API_URL = 'https://softenmatching67.netlify.app/api';
 
 // Function to fetch result data for a specific student
 async function fetchResultData(studentId) {

@@ -1,4 +1,3 @@
-//result.js
 const API_URL = 'https://safe-savannah-37690-21aadeb098f5.herokuapp.com';
 
 // Function to fetch result data for a specific student
@@ -55,7 +54,7 @@ function displayResults(matches, studentId) {
             const year2MatchMessage = match[3] === studentId ? match[2] : match[2]; // Year 2 message column
             resultText += `
                 <p>สวัสดี ${year1MatchNickname} หม่ำๆ!</p>
-                ${year2MatchMessage ? `<p>Message:${year2MatchMessage}</p>` : ''}
+                ${year2MatchMessage ? `<p>Message: ${year2MatchMessage}</p>` : ''}
                 <p>Hint: เร็วๆนี้!</p>
             `;
         }
@@ -74,6 +73,7 @@ function getQueryParam(param) {
 // Function to render specific match chart
 async function renderSpecificMatchChart(matches) {
     // Check if the current user is a Year 1 student
+    const studentId = getQueryParam('studentId'); // Make sure studentId is defined here
     const isYear1 = matches.some(row => row[3] === studentId || row[8] === studentId);
 
     let labels, similarityScores1, similarityScores2;

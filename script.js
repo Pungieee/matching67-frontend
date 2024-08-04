@@ -7,8 +7,8 @@ async function fetchResults() {
     }
 
     try {
-// Update URLs in script.js
-        const response = await fetch(`https://softenmatching67.netlify.app/api/validate-student-id?studentId=${studentId}`);
+        // Update URL in script.js
+        const response = await fetch(`https://safe-savannah-37690-21aadeb098f5.herokuapp.com/api/validate-student-id?studentId=${studentId}`);
         const result = await response.json();
         
         if (result.valid) {

@@ -1,7 +1,11 @@
-//result.js
+// result.js
+
+const API_URL = 'https://safe-savannah-37690-21aadeb098f5.herokuapp.com/api';
+
+// Function to fetch result data for a specific student
 async function fetchResultData(studentId) {
     try {
-        const response = await fetch('http://localhost:3000/api/sheet-data');
+        const response = await fetch(`${API_URL}/sheet-data`);
         const text = await response.text(); // Get response as text
         try {
             const data = JSON.parse(text); // Parse text as JSON
@@ -19,6 +23,7 @@ async function fetchResultData(studentId) {
     }
 }
 
+// Function to display results
 function displayResults(matches, studentId) {
     const resultDiv = document.getElementById('result');
     if (matches.length === 0) {
@@ -35,7 +40,7 @@ function displayResults(matches, studentId) {
             resultText += `
                 <p>สวัสดี ${match[1]} หม่ำๆ!</p> 
                 <p><strong>Your ฟาเก้ Name</strong>: ${match[13]}</p>
-                 <p>&nbsp;</p> 
+                <p>&nbsp;</p> 
                 <p><strong>Match 1</strong>: ${match[4]} - <strong>IG</strong>: ${match[6]}</p>
                 ${match[7] ? `<p><strong>Message:</strong> ${match[7]}</p>` : ''}
             `;
@@ -61,16 +66,13 @@ function displayResults(matches, studentId) {
     resultDiv.innerHTML = resultText;
 }
 
-
-
-//
+// Function to get query parameter
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
 
-
-//
+// Function to render specific match chart
 async function renderSpecificMatchChart(matches) {
     // Check if the current user is a Year 1 student
     const isYear1 = matches.some(row => row[3] === studentId || row[8] === studentId);
@@ -145,14 +147,14 @@ async function renderSpecificMatchChart(matches) {
     });
 }
 
-//
-
+// Function to fetch match data for the overall chart
 async function fetchMatchData() {
-    const response = await fetch('http://localhost:3000/api/sheet-data');
+    const response = await fetch(`${API_URL}/sheet-data`);
     const data = await response.json();
     return data.slice(1); // Skip the header row
 }
 
+// Function to shuffle array elements
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -160,6 +162,7 @@ function shuffleArray(array) {
     }
 }
 
+// Function to prepare radar chart data
 function prepareRadarChartData(data) {
     // Shuffle the data array
     shuffleArray(data);
@@ -189,6 +192,7 @@ function prepareRadarChartData(data) {
     };
 }
 
+// Function to render overall chart
 async function renderOverallChart() {
     const data = await fetchMatchData();
     const chartData = prepareRadarChartData(data);
@@ -214,7 +218,7 @@ async function renderOverallChart() {
     });
 }
 
-
+// Main execution
 const studentId = getQueryParam('studentId');
 if (studentId) {
     fetchResultData(studentId);

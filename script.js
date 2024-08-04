@@ -1,3 +1,4 @@
+// script.js
 async function fetchResults() {
     const studentId = document.getElementById('student-id').value;
     if (!studentId) {
@@ -6,7 +7,7 @@ async function fetchResults() {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/validate-student-id?studentId=${studentId}`);
+        const response = await fetch(`https://safe-savannah-37690-21aadeb098f5.herokuapp.com/api/validate-student-id?studentId=${studentId}`);
         const result = await response.json();
         
         if (result.valid) {

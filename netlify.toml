@@ -1,10 +1,4 @@
 [[redirects]]
-  from = "/login.html"
-  to = "/login"
-  status = 200
-  force = true
-
-[[redirects]]
   from = "/result"
   to = "/result.html"
   status = 200

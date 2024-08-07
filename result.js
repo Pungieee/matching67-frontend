@@ -52,10 +52,11 @@ function displayResults(matches, studentId) {
         } else if (match[3] === studentId || match[8] === studentId) { // Year 1 student
             const year1MatchNickname = match[3] === studentId ? match[4] : match[9]; // Choose the appropriate nickname
             const year2MatchMessage = match[3] === studentId ? match[2] : match[2]; // Year 2 message column
+            const hint1 = match[14]; // Column O for hint1
             resultText += `
                 <p>สวัสดี ${year1MatchNickname} หม่ำๆ!</p>
                 ${year2MatchMessage ? `<p>Message: ${year2MatchMessage}</p>` : ''}
-                <p>Hint: เร็วๆนี้!</p>
+                ${hint1 ? `<p>Hint 1: ${hint1}</p>` : '<p>Hint 1: ไม่มีข้อมูล</p>'}
             `;
         }
     });
@@ -63,6 +64,7 @@ function displayResults(matches, studentId) {
     // Update the resultDiv with the result text
     resultDiv.innerHTML = resultText;
 }
+
 
 // Function to get query parameter
 function getQueryParam(param) {

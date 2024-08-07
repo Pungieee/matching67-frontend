@@ -1,0 +1,17 @@
+[[redirects]]
+  from = "/index.html"
+  to = "/login"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/result"
+  to = "/result.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/message.html"
+  to = "/message"
+  status = 200
+  force = true

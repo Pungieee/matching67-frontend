@@ -7,3 +7,9 @@
   to = "/login.html"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/login"
+  to = "/login.html"
+  status = 200
+  force = true

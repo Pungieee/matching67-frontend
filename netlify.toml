@@ -1,5 +1,21 @@
+[build]
+  publish = "public" # or your build directory
+  command = "npm run build" # or your build command
+
 [[redirects]]
-  from = "/message.html"
-  to = "/message"
+  from = "/"
+  to = "/login.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/login"
+  to = "/login.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/message"
+  to = "/message.html"
   status = 200
   force = true

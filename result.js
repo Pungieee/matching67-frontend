@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://safe-savannah-37690-21aadeb098f5.herokuapp.com/api';
 
 // Function to fetch result data for a specific student
 async function fetchResultData(studentId) {

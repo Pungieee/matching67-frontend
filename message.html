@@ -8,11 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="icon" href="videos/chick.png" type="image/x-icon"> <!-- Add this line -->
-
+    <link rel="icon" href="videos/chick.png" type="image/x-icon">
 </head>
 <body>
-    <!-- Background Video -->
     <video autoplay muted loop id="background-video">
         <source src="videos/code.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -24,16 +22,37 @@
             เพื่อนที่ได้ % คำตอบตรงกันน้อย อย่าเพิ่งหมดความมั่นใจเสียกำลังใจกันน้า เพราะคำถามที่ใช้คัดมีแค่ 10 ข้อและค่อนข้างกว้างเราอยากให้ใช้โอกาสนี้ในการทำความรู้จักกันมากกว่าดูที่คะเเนน <br><br>
             ขอบคุณเพื่อนๆทุกคนที่มาร่วมจับสายรหัสกันในปีนี้ ทางเราต้องขออภัย(เป็นอย่างสูง)กับการ matching ที่อาจจะมีข้อบกพร่องบ้าง เช่นเรื่องคำถามที่หลากหลายเเละครอบคลุม โดยจะนำ feedback ที่เพื่อนๆเสนอไปปรับปรุงให้ดีขึ้นในปีหน้านะ🫡 (ส่งไม้ต่อให้น้องๆ อิ-อิ)<br>
             ขอบคุณเพื่อนๆที่เข้าใจ เเล้วเจอกันในวันเฉลยสายรหัสนะ!😙🤘🏻
+        </p>
         <p style="font-size: 14px; text-align: center; margin-top: 40px; color: #ff5722; font-weight: bold; font-family: 'Pixelify Sans', sans-serif;">
             ติดตามข่าวสารเพิ่มเติมได้ที่ IG: tu.soft_en<br>
             หรือหากมีข้อเสนอเเนะเพิ่มเติมเดมมาได้เลย
-        </p>    
+        </p>
         <div class="button-group">
-            <button onclick="window.location.href='result.html'">Back</button>
+            <button id="backButton">Back</button>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="result.js"></script>
+    <script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    const studentId = getQueryParam('studentId');
+
+    // Set up the "Back" button with the correct URL
+    document.addEventListener('DOMContentLoaded', () => {
+        const backButton = document.getElementById('backButton');
+        if (studentId) {
+            backButton.onclick = () => {
+                window.location.href = `result.html?studentId=${studentId}`;
+            };
+        } else {
+            backButton.onclick = () => {
+                window.location.href = 'login.html'; // Fallback if no studentId is present
+            };
+        }
+    });
+    </script>
 </body>
 </html>

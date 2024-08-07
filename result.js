@@ -1,4 +1,4 @@
-const API_URL = 'https://safe-savannah-37690-21aadeb098f5.herokuapp.com/api';
+const API_URL = 'http://localhost:3000/api';
 
 // Function to fetch result data for a specific student
 async function fetchResultData(studentId) {
@@ -84,7 +84,7 @@ async function renderSpecificMatchChart(matches) {
         // For Year 1 students, show only their Year 2 match's similarity score
         const year1Match = matches.find(row => row[3] === studentId || row[8] === studentId);
         const year2FakeName = year1Match[3] === studentId ? year1Match[13] : year1Match[13]; // Year 2 student's fake name
-        const similarityScore = year1Match[3] === studentId ? year1Match[5] : year1Match[9]; // Similarity score
+        const similarityScore = year1Match[3] === studentId ? year1Match[5] : year1Match[10]; // Similarity score
         
         labels = [`${year2FakeName} (${similarityScore}%)`];
         similarityScores1 = [parseInt(similarityScore, 10)];

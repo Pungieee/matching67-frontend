@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <link rel="icon" href="videos/chick.png" type="image/x-icon"> <!-- Add this line -->
-
 </head>
 <body>
     <!-- Background Video -->
@@ -25,22 +24,28 @@
         <canvas id="overallSimilarityChart" width="400" height="400"></canvas>
 
         <div class="button-group">
-            <button onclick="window.location.href='index.html'">Back</button>
-            <button onclick="window.location.href='message.html'">Next</button>
+            <button onclick="window.location.href='login.html'">Back</button>
+            <button id="nextButton">Next</button>
         </div>
     </div>
     <div class="pixel-art"></div>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js library -->
-    <script src="result.js"></script> <!-- Your script for fetching and displaying data -->
+    <script src="result.js"></script> 
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const resultDiv = document.getElementById('result');
-    // Example of adding a simple visual effect
-    if (resultDiv.innerHTML.includes('Match 1')) {
-        resultDiv.innerHTML += '<div class="confetti"></div>'; // Add your confetti animation here
-    }
-});
-</script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const resultDiv = document.getElementById('result');
+        if (resultDiv.innerHTML.includes('Match 1')) {
+            resultDiv.innerHTML += '<div class="confetti"></div>'; 
+        }
+
+        const studentId = new URLSearchParams(window.location.search).get('studentId');
+        if (studentId) {
+            document.getElementById('nextButton').onclick = () => {
+                window.location.href = `message.html?studentId=${studentId}`;
+            };
+        }
+    });
+    </script>
 </body>
 </html>

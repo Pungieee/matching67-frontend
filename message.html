@@ -11,10 +11,10 @@
     <link rel="icon" href="videos/chick.png" type="image/x-icon">
 </head>
 <body>
-    <video autoplay muted loop id="background-video">
-        <source src="videos/background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+    <video id="background-video" autoplay muted loop preload="none">
+    <source src="videos/background.mp4" type="video/mp4">
     </video>
+
 
     <div class="container">
         <h1>Important Message</h1>
@@ -54,5 +54,12 @@
         }
     });
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const video = document.getElementById('background-video');
+        video.load();
+    });
+    </script>
+
 </body>
 </html>

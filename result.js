@@ -53,10 +53,12 @@ function displayResults(matches, studentId) {
             const year1MatchNickname = match[3] === studentId ? match[4] : match[9]; // Choose the appropriate nickname
             const year2MatchMessage = match[3] === studentId ? match[2] : match[2]; // Year 2 message column
             const hint1 = match[14]; // Column O for hint1
+            const hint2 = match[15]; // Column P for hint2
             resultText += `
                 <p>สวัสดี ${year1MatchNickname} หม่ำๆ!</p>
                 ${year2MatchMessage ? `<p>Message: ${year2MatchMessage}</p>` : ''}
                 ${hint1 ? `<p>Hint 1: ${hint1}</p>` : '<p>Hint 1: ไม่มีข้อมูล</p>'}
+                ${hint2 ? `<p>Hint 2: ${hint2}</p>` : '<p>Hint 1: ไม่มีข้อมูล</p>'}
             `;
         }
     });

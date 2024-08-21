@@ -1,13 +1,12 @@
 const API_URL = 'https://safe-savannah-37690-21aadeb098f5.herokuapp.com/api';
 
-// Function to fetch result data for a specific student
 async function fetchResultData(studentId) {
     try {
         const response = await fetch(`${API_URL}/sheet-data`);
-        const text = await response.text(); // Get response as text
+        const text = await response.text(); 
         try {
-            const data = JSON.parse(text); // Parse text as JSON
-            // Filter for matches based on student ID
+            const data = JSON.parse(text); 
+   
             const matches = data.slice(1).filter(row => row[0] === studentId || row[3] === studentId || row[8] === studentId);
             displayResults(matches, studentId); // Pass studentId to displayResults
             renderSpecificMatchChart(matches); // Render the specific match chart
@@ -54,17 +53,55 @@ function displayResults(matches, studentId) {
             const year2MatchMessage = match[3] === studentId ? match[2] : match[2]; // Year 2 message column
             const hint1 = match[14]; // Column O for hint1
             const hint2 = match[15]; // Column P for hint2
+            const hint3 = match[16]; // Column P for hint2
+
             resultText += `
                 <p>สวัสดี ${year1MatchNickname} หม่ำๆ!</p>
+                <p>&nbsp;</p> 
                 ${year2MatchMessage ? `<p>Message: ${year2MatchMessage}</p>` : ''}
                 ${hint1 ? `<p>Hint 1: ${hint1}</p>` : '<p>Hint 1: ไม่มีข้อมูล</p>'}
-                ${hint2 ? `<p>Hint 2: ${hint2}</p>` : '<p>Hint 1: ไม่มีข้อมูล</p>'}
+                ${hint2 ? `<p>Hint 2: ${hint2}</p>` : '<p>Hint 2: ไม่มีข้อมูล</p>'}
+                ${hint3 ? `<p id="hint3">Hint 3: </p>` : '<p>Hint 3: ไม่มีข้อมูล</p>'}
+                <p>&nbsp;</p> 
+                <p id="finalMessage"></p>
+
             `;
         }
     });
 
     // Update the resultDiv with the result text
     resultDiv.innerHTML = resultText;
+
+// Display Hint 3 gradually
+    const hint3Text = matches.find(match => match[3] === studentId || match[8] === studentId)?.[16] || ''; // Use optional chaining and default value
+    const hint3Element = document.getElementById('hint3');
+    const finalMessageElement = document.getElementById('finalMessage');
+    const finalMessage = "คำใบ้สุดท้ายเเล้ว หวังว่าน้องจะหาพี่กันเจอนะงับ เเล้วเจอกันวันเฉลยสายรหัสเสาร์นี้!! พี่ๆรอเจอน้องๆอยู่น้า🫵😍";
+
+    if (hint3Element) {
+        let i = 0;
+        function typeHint3() {
+            if (i < hint3Text.length) {
+                hint3Element.innerHTML += hint3Text.charAt(i);
+                i++;
+                setTimeout(typeHint3, 100); // Adjust the speed here (100ms)
+            } else {
+                // Start typing the final message after Hint 3 is fully displayed
+                setTimeout(typeFinalMessage, 500); // 500ms delay before starting final message
+            }
+        }
+
+        let j = 0;
+        function typeFinalMessage() {
+            if (j < finalMessage.length) {
+                finalMessageElement.innerHTML += finalMessage.charAt(j);
+                j++;
+                setTimeout(typeFinalMessage, 100); // Adjust the speed here (100ms)
+            }
+        }
+
+        setTimeout(typeHint3, 500); // Delay before starting to type Hint 3 (500ms)
+    }
 }
 
 
